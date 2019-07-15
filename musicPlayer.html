@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>萌萌音乐</title>
+    <link
+      rel="stylesheet"
+      href="http://at.alicdn.com/t/font_1178967_a9fjjlyjqsi.css"
+    />
+    <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="wrap">
+        <div class="title">
+            <h2>萌萌音乐播放器</h2>
+        </div>
+        <div class="music_content" ref="musicBox">
+          <ul class="music_list" data-mcs-theme="minimal-dark">
+            <li
+              v-for="(item,i) in musicData"
+              :key="item.id"
+              @click="changeMusic(i)"
+              :class="{active:currIndex == i}"
+            >
+              <h3 class="author">歌手:{{ item.singer }}</h3>
+              <p class="musicName">歌名:{{ item.name }}</p>
+              <span class="time">{{ item.time }}</span>
+            </li>
+          </ul>
+          <div class="music_info">
+            <div class="singer_pic">
+              <img :src="singer_pic">
+            </div>
+            <p class="sing_name">歌名:{{sing_name}}</p>
+            <p class="singer_name">歌手:{{singer_name}}</p>
+            <p class="sing_album">专辑名:{{sing_album}}</p>
+            <div class="songContainer">
+              <ul class="songLyrics" ref="songLyrics">
+                <li v-for="(item,i) in lyrics" :key="i" :class="{curr:i == lyricsIndex}">{{item}}</li>
+              </ul>
+           </div>
+          </div>
+        </div>
+        <div class="audioBox">
+            <audio
+              :src="link_url"
+              :autoplay="autoplay"
+              @ended = "ended"
+              ref="audio"
+            >您的浏览器不支持audio标签</audio>
+            <div class="audioControl clearfix">
+              <button @click="prevplay" class="btn prevplay">
+                <i class="iconfont iconshangyiqu"></i>
+              </button>
+              <button @click="playToggle" class="btn play" v-if="isStop">
+                <i class="iconfont iconstop"></i>
+              </button>
+              <button @click="playToggle" class="btn play" v-else>
+                <i class="iconfont iconplay"></i>
+              </button>
+              <button @click="nextplay" class="btn nextplay">
+                <i class="iconfont iconxiayiqu"></i>
+              </button>
+              <div class="progress" ref="progress">
+                  <div class="bar" ref="bar" @click="progressClick"></div>
+                  <div class="loaded"></div>
+                  <div class="elapse" ref="elapse" :style="{width:pressWidht + '%'}"></div>
+              </div>
+               <div class="time">
+                <span class="currentTime" v-cloak>{{currentTime}}</span>
+                <span>\</span>
+                <span class="totalTime" v-cloak>{{totalTime}}</span>
+            </div>
+            <button @click="auto" class="btn sjplay" v-if="playMode == 'sjplay'">
+              <i class="iconfont iconsuiji"></i>
+            </button>
+            <button @click="auto" class="btn oneplay" v-else-if="playMode == 'oneplay'">
+              <i class="iconfont icondanquxunhuan"></i>
+            </button>
+            <button @click="auto" class="btn listplay" v-else="playMode == 'listplay'">
+              <i class="iconfont iconxunhuan"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mask_bg" ref="mask_bg"></div>
+      <div class="mask"></div>
+    </div>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script>
+      $(function(){
+        $(".music_list").mCustomScrollbar();
+      })
+    </script>
+  </body>
+</html>
