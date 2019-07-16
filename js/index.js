@@ -3,24 +3,24 @@ $(function(){
     let app = new Vue({
         el:"#app",
         data:{
-        musicData:[],
-        link_url:"./source/告白气球.mp3",
-        currIndex:0,
-        isStop:true,
-        autoplay:false,
-        totalTime:"00:00:00",
-        currentTime:"00:00:00",
-        pressWidht:0,
-        singer_pic:"./source/告白气球.jpg",
-        sing_name:"告白气球",
-        singer_name:"周杰伦",
-        sing_album:"周杰伦的床边故事",
-        playMode:"sjplay",
-        playModeCurr:0,
-        lyricsPath:"",
-        lyrics:[],
-        lyricsTime:[],
-        lyricsIndex:-1,
+            musicData:[],
+            link_url:"./source/告白气球.mp3",
+            currIndex:0,
+            isStop:true,
+            autoplay:false,
+            totalTime:"00:00:00",
+            currentTime:"00:00:00",
+            pressWidht:0,
+            singer_pic:"./source/告白气球.jpg",
+            sing_name:"告白气球",
+            singer_name:"周杰伦",
+            sing_album:"周杰伦的床边故事",
+            playMode:"sjplay",
+            playModeCurr:0,
+            lyricsPath:"",
+            lyrics:[],
+            lyricsTime:[],
+            lyricsIndex:-1,
         },
         methods:{
             //获取音乐列表渲染
@@ -51,7 +51,8 @@ $(function(){
                 if(audio.paused){
                     audio.play();
                     this.isStop = false;
-                    this.musicPlay(audio);
+                    // this.musicPlay(audio);
+                    this.changeMusicPlay(this.currIndex);
                 }else{
                     audio.pause();
                     this.isStop = true;
@@ -73,7 +74,6 @@ $(function(){
                     this.changeMusicPlay(this.currIndex);
                     this.musicPlay(this.$refs.audio);
                 }
-                console.log(this.totalTime)
             },
             // 上一首
             prevplay(){
@@ -115,6 +115,10 @@ $(function(){
                 this.musicPlay(this.$refs.audio);
                     //获取歌词信息
                     let self = this;
+                    if(this.lyricsPath == ""){
+                        this.lyrics = ['没有该歌曲歌词信息！']
+                        return
+                    };
                     $.ajax({
                         type:"get",
                         dataType:"text",
@@ -160,7 +164,7 @@ $(function(){
                     self.pressWidht = val.currentTime/this.duration*100;
                     self.currentTime = self.getTime(val.currentTime);
                     // console.log(val.currentTime);
-                    if(val.currentTime > self.lyricsTime[0]){
+                    if(val.currentTime > self.lyricsTime[0] && self.lyricsPath != ""){
                         self.lyricsIndex ++ ;
                         self.lyricsTime.shift();
                         if(self.lyricsIndex <= 2) return;
