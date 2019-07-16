@@ -107,13 +107,14 @@ audio{
 }
 .music_info .songContainer{
     margin: 40px auto;
-    height: 200px;
+    height: 180px;
     line-height: 30px;
     overflow: hidden;
-    width: 300px;
 }
 .songLyrics{
-    transition: margin-top .5s;
+    width: 300px;
+    margin: 0 auto;
+    /* transition: margin-top .5s; */
 }
 .songLyrics li{
     font-weight: 600;
@@ -236,9 +237,7 @@ audio{
     }
     .music_info .songContainer{
         margin: 20px auto;
-        height: 120px;
-        line-height: 24px;
-        overflow: hidden;
-        width: 300px;
+        height: 150px;
+        line-height: 30px;
     }
 }
