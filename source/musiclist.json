@@ -114,5 +114,50 @@
     "link_url":"./source/输了你赢了世界又如何.mp3",
     "cover":"./source/输了你赢了世界又如何.jpg",
     "link_lrc":"./source/输了你赢了世界又如何.txt"
+  },
+  {
+    "name":"铃铛",
+    "singer": "蒋衡",
+    "album": "铃铛",
+    "time": "05:13",
+    "link_url":"./source/铃铛.mp3",
+    "cover":"./source/铃铛.jpg",
+    "link_lrc":""
+  },
+  {
+    "name":"春浪",
+    "singer": "小猛",
+    "album": "未知",
+    "time": "04:13",
+    "link_url":"./source/春浪.mp3",
+    "cover":"./source/春浪.jpg",
+    "link_lrc":""
+  },
+  {
+    "name":"封锁线",
+    "singer": "马条",
+    "album": "封锁线",
+    "time": "04:04",
+    "link_url":"./source/封锁线.mp3",
+    "cover":"./source/封锁线.jpg",
+    "link_lrc":""
+  },
+  {
+    "name":"亲爱的你",
+    "singer": "小海",
+    "album": "封锁线",
+    "time": "04:33",
+    "link_url":"./source/亲爱的你.mp3",
+    "cover":"./source/亲爱的你.jpg",
+    "link_lrc":""
+  },
+  {
+    "name":"漂洋过海来看你",
+    "singer": "刘明湘",
+    "album": "未知",
+    "time": "03:16",
+    "link_url":"./source/漂洋过海来看你.mp3",
+    "cover":"./source/漂洋过海来看你.jpg",
+    "link_lrc":""
   }
 ]
